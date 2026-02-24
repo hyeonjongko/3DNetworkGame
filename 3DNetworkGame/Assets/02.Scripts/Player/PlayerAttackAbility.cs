@@ -20,7 +20,7 @@ public class PlayerAttackAbility : PlayerAbility
 
         _attackTimer += Time.deltaTime;
 
-        if (Input.GetMouseButton(0) && _attackTimer >= _owner.Stat.AttackSpeed)
+        if (Input.GetMouseButton(0) && _attackTimer >= _owner.Stat.AttackSpeed && _owner.Stat.Stamina > _owner.Stat.AttackStamina)
         {
             _attackTimer = 0f;
 
@@ -40,6 +40,8 @@ public class PlayerAttackAbility : PlayerAbility
                 }
             }
             
+            _owner.Stat.Stamina -= _owner.Stat.AttackStamina;
+
             _animator.SetTrigger($"Attack{animationNumber}");
         }
     }

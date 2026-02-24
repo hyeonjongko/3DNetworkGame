@@ -26,6 +26,7 @@ public class PlayerMoveAbility : PlayerAbility
 
     private void Update()
     {
+        // 내꺼가 아니면 건들지 않는다!
         if (!_owner.PhotonView.IsMine) return;
 
         float h = Input.GetAxis("Horizontal");
@@ -41,13 +42,24 @@ public class PlayerMoveAbility : PlayerAbility
 
         _yVeocity -= GRAVITY * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.Space) && _characterController.isGrounded)
+        if (Input.GetKey(KeyCode.Space) && _characterController.isGrounded && _owner.Stat.Stamina > _owner.Stat.JumpStamina)
         {
+            _owner.Stat.Stamina -= _owner.Stat.JumpStamina;
             _yVeocity = _owner.Stat.JumpPower;
         }
 
         direction.y = _yVeocity;
 
-        _characterController.Move(direction * Time.deltaTime * _owner.Stat.MoveSpeed);
+        if (Input.GetKey(KeyCode.LeftShift) && _owner.Stat.Stamina > 0f)
+        {
+            _owner.Stat.Stamina -= _owner.Stat.Stamina * Time.deltaTime;
+            _characterController.Move(direction * Time.deltaTime * _owner.Stat.RunSpeed);
+        }
+        else
+        {
+            _owner.Stat.Stamina = Mathf.Min(_owner.Stat.MaxStamina, _owner.Stat.Stamina + Time.deltaTime);
+            _characterController.Move(direction * Time.deltaTime * _owner.Stat.MoveSpeed);
+        }
+
     }
 }
