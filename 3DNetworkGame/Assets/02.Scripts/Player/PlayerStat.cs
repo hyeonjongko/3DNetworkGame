@@ -14,4 +14,5 @@ public class PlayerStat
     public float AttackSpeed;
     public float JumpStamina;
     public float AttackStamina;
+    public float Damage;
 }

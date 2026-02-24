@@ -547,7 +547,7 @@ namespace Photon.Chat.DemoChat
         public void OnPrivateMessage(string sender, object message, string channelName)
         {
             // as the ChatClient is buffering the messages for you, this GUI doesn't need to do anything here
-            // you also get messages that you sent yourself. in that case, the channelName is determinded by the target of your msg
+            // you also get messages that you sent yourself. in that case, the channelName is determinded by the _target of your msg
             this.InstantiateChannelButton(channelName);
 
             byte[] msgBytes = message as byte[];

@@ -15,6 +15,9 @@ public class PlayerRotateAbility : PlayerAbility
 
         Cursor.lockState = CursorLockMode.Locked;
 
+
+        if(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()) return;
+
         CinemachineCamera vcam = GameObject.Find("FollowCamera").GetComponent<CinemachineCamera>();
         vcam.Follow = CameraRoot.transform;
     }
@@ -30,5 +33,14 @@ public class PlayerRotateAbility : PlayerAbility
 
         transform.eulerAngles = new Vector3(0f, _mx, 0f);
         CameraRoot.localRotation = Quaternion.Euler(-_my, 0f, 0f);
+
+        if (Input.GetKey(KeyCode.Tab))
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        if (Input.GetKeyUp(KeyCode.Tab))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }
