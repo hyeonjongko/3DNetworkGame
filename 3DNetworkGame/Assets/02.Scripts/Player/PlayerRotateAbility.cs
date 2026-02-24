@@ -3,14 +3,14 @@ using UnityEngine;
 
 public class PlayerRotateAbility : PlayerAbility
 {
-    public Transform CameraRoot; // ÄÚ
+    public Transform CameraRoot; // ï¿½ï¿½
 
     private float _mx;
     private float _my;
 
     private void Start()
     {
-        // ÀÌ°Ô Æ÷Åæ¿¡¼­ °¡Àå ³õÄ¡±â ½±°í ¹ö±×¸¦ ¸¹ÀÌ ÀÏÀ¸Å°´Â ¿ä¼Ò
+        // ï¿½Ì°ï¿½ ï¿½ï¿½ï¿½æ¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½×¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½
         if (!_owner.PhotonView.IsMine) return;
 
         Cursor.lockState = CursorLockMode.Locked;
@@ -20,6 +20,10 @@ public class PlayerRotateAbility : PlayerAbility
 
         CinemachineCamera vcam = GameObject.Find("FollowCamera").GetComponent<CinemachineCamera>();
         vcam.Follow = CameraRoot.transform;
+
+        CopyPosition minimapCopy = FindObjectOfType<CopyPosition>();
+        if (minimapCopy != null)
+            minimapCopy.SetTarget(transform);
     }
 
     private void Update()
