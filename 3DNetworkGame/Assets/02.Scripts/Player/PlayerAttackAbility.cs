@@ -45,21 +45,21 @@ public class PlayerAttackAbility : PlayerAbility
             
             _owner.Stat.Stamina -= _owner.Stat.AttackStamina;
 
-            //1. �Ϲ� �޼��� ȣ�� ���
+            // 1. 일반 메서드 호출 방식
             PlayerAttackAnimation(animationNumber);
 
-            //2. RPC �޼��� ȣ�� ���
-            //�ٸ� ��ǻ�Ϳ� �ִ� �� �÷��̾� ������Ʈ�� PlayerAttackAnimation �޼��带 ȣ���Ѵ�.
+            // 2. RPC 메서드 호출 방식
+            // 다른 컴퓨터에 있는 내 플레이어 오브젝트의 PlayAttackAnimation 메서드를 실행한다.
             _owner.PhotonView.RPC(nameof(PlayerAttackAnimation), RpcTarget.All, animationNumber);
         }
     }
 
-    //Ʈ������(��ġ, ȸ��, ������), �ִϸ��̼�(float�Ķ����)�� ���� ��÷� ����ȭ�� �ʿ��� �����ʹ� : IPunObserable(OnPhotonSerializeView)
-    //�ִϸ��̼� Ʈ����ó�� ���������� Ư���� �̺�Ʈ�� �߻����� ���� ��ȭ�ϴ� ������ ����ȭ�� ������ ����ȭ�� �ƴ� �̺�Ʈ ����ȭ : RPC
-    // RPC : Remote Procedure Call (���� �Լ� ȣ��)
-    //  �� ���������� ������ �ִ� �ٸ� ����̽��� �Լ��� ȣ���ϴ� ���
+    // 트랜스폼(위치,회전,스케일), 애니메이션(float파라미터)와 같이 상시로 동기화가 필요한 데이터는 : IPun옵저블(OnPhoton시리얼라이즈View)
+    // 애니메이션 트리거처럼 간헐적으로 특정한 이벤트가 발생했을때만 변화하는 데이터 동기화는 데이터 동기화가 아닌 이벤트 동기화 : RPC
+    // RPC : Remote Procedure Call (원격 함수 호출)
+    //   ㄴ 물리적으로 떨어져 있는 다른 디바이스의 내 포톤뷰의 함수를 호출하는 기능
 
-    //RPC�� ȣ���� �Լ��� �ݵ�� [PunRPC] ��Ʈ����Ʈ�� �Լ� �տ� �������־�� �Ѵ�.
+    // RPC로 호출할 함수는 반드시 [PunRPC] 어트리뷰트를 함수 앞에 명시해줘야한다.
     [PunRPC]
     private void PlayerAttackAnimation(int animationNumber)
     {

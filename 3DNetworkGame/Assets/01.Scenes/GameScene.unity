@@ -2266,9 +2266,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a58436d78de6eb449a36091121da21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CopyPosition
-  _x: 0
+  _x: 1
   _y: 0
-  _z: 0
+  _z: 1
   _target: {fileID: 0}
 --- !u!1001 &204504010
 PrefabInstance:
