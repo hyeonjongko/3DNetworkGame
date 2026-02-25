@@ -10,7 +10,7 @@ using UnityEditor;
 namespace Photon.Chat.DemoChat
 {
     /// <summary>
-    /// Utility class to provide an instance with the Chat AppId to use by the demo. Can use PUN PhotonServerSettings or work as standalone.
+    /// Utility class to provide an Instance with the Chat AppId to use by the demo. Can use PUN PhotonServerSettings or work as standalone.
     /// </summary>
     /// <remarks>
     /// See the Instance getter for the different implementations (with and without PUN).
@@ -27,7 +27,7 @@ namespace Photon.Chat.DemoChat
         //  backing field for property
         private static ChatSettings instance;
 
-        // provides access to instance of ChatSettings. file gets created if not available
+        // provides access to Instance of ChatSettings. file gets created if not available
         public static ChatSettings Instance
         {
             get
@@ -68,7 +68,7 @@ namespace Photon.Chat.DemoChat
             }
         }
 
-        // creates an instance of ChatSettings and in Editor, stores it in a default path
+        // creates an Instance of ChatSettings and in Editor, stores it in a default path
         private static ChatSettings Create()
         {
             ChatSettings settings = (ChatSettings)ScriptableObject.CreateInstance("ChatSettings");

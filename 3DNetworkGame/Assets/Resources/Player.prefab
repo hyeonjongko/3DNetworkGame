@@ -1754,6 +1754,7 @@ GameObject:
   - component: {fileID: 264076444360227558}
   - component: {fileID: 241067994588954258}
   - component: {fileID: 6127300272311753853}
+  - component: {fileID: -7402660180037593240}
   - component: {fileID: 6197526510687512958}
   - component: {fileID: 6636768466630844914}
   - component: {fileID: 591153537678424561}
@@ -1897,6 +1898,7 @@ MonoBehaviour:
     JumpStamina: 3
     AttackStamina: 2
     Damage: 10
+  _score: 0
 --- !u!114 &6127300272311753853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1910,6 +1912,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerWeaponAbility
   _collider: {fileID: 7428274850463265608}
+--- !u!114 &-7402660180037593240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4902418581628224342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3702213243e82b446bfceb8695dd41d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerDeathAbility
 --- !u!114 &6197526510687512958
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ public class PlayerMoveAbility : PlayerAbility
     {
         // 내꺼가 아니면 건들지 않는다!
         if (!_owner.PhotonView.IsMine) return;
+        if(_owner.Stat.Health <= 0) return;
 
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");

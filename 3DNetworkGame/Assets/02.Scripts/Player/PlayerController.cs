@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
     public PhotonView PhotonView;
     public PlayerStat Stat;
 
+    public int _score = 0;
+
     private void Awake()
     {
         PhotonView = GetComponent<PhotonView>();
@@ -24,10 +26,32 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
     }
 
     [PunRPC]
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, int attackerActorNumber)
     {
         Debug.Log("아프다!");
         Stat.Health -= damage;
+
+        if (Stat.Health <= 0)
+        {
+            //사망처리
+            PhotonRoomManager.Instance.OnPlayerDeath(attackerActorNumber);
+
+            if(PhotonView.IsMine)
+            {
+                //아이템 생성
+                MakeScoreItems();
+            }
+        }
+    }
+
+    private void MakeScoreItems()
+    {
+        int randomCount = UnityEngine.Random.Range(3, 5);
+
+        for (int i = 0; i < randomCount; i++)
+        {
+           PhotonNetwork.Instantiate("ScoreItem", transform.position, Quaternion.identity);
+        }
     }
 
     // 데이터 동기화를 위한 데이터 읽기(전송), 쓰기(수신) 메서드

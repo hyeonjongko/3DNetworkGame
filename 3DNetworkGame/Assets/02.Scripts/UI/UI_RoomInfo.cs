@@ -12,14 +12,14 @@ public class UI_RoomInfo : MonoBehaviour
     {
         _roomExitButton.onClick.AddListener(ExitRoom);
 
-        PhotonRoomManager.instance.OnDataChanged += Refresh;
+        PhotonRoomManager.Instance.OnDataChanged += Refresh;
 
         Refresh();
     }
 
     private void Refresh()
     {
-        Room room = PhotonRoomManager.instance.Room;
+        Room room = PhotonRoomManager.Instance.Room;
         if (room == null) return;
 
         _roomNameTextUI.text = room.Name;
@@ -31,9 +31,4 @@ public class UI_RoomInfo : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
