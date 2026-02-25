@@ -1,7 +1,9 @@
+using Photon.Pun;
 using System;
 using System.Collections.Generic;
-using Photon.Pun;
 using UnityEngine;
+using UnityEngine.EventSystems;
+
 
 //플레이어 대표로써 외부와의 소통 또는 어빌리티들을 관리하는 역할
 public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
@@ -12,6 +14,13 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
     private void Awake()
     {
         PhotonView = GetComponent<PhotonView>();
+    }
+
+    private void Start()
+    {
+        if (!PhotonView.IsMine) return;
+
+        GameObject.Find("MinimapCamera").GetComponent<CopyPosition>().SetTarget(transform);
     }
 
     [PunRPC]

@@ -4,6 +4,9 @@ public class CopyPosition : MonoBehaviour
 {
     [SerializeField] private bool _x, _y, _z;
     [SerializeField] private Transform _target;
+
+    public void SetTarget(Transform target) => _target = target;
+
     void Update()
     {
         if(!_target) return;
