@@ -1,16 +1,24 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerDeathAbility : MonoBehaviour
+public class PlayerDeathAbility : PlayerAbility
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private Animator _animator;
+
+    private void Start()
     {
-        
+        _animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if(!_owner.PhotonView.IsMine) return;
+
+        //플레이어의 체력이 0이하로 떨어진다
+        if(_owner.Stat.Health < 0 )
+        {
+        //죽는 애니메이션 출력
         
+        }
+
     }
 }
