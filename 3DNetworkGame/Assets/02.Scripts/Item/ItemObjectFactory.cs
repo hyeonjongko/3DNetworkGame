@@ -1,0 +1,44 @@
+using Photon.Pun;
+using UnityEngine;
+
+public class ItemObjectFactory : MonoBehaviour
+{
+    public static ItemObjectFactory Instance { get; private set; }
+
+    private PhotonView _photonView;
+
+    private void Awake()
+    {
+        Instance = this;
+
+        _photonView = GetComponent<PhotonView>();
+    }
+
+    //¿ì¸®ÀÇ ¾à¼Ó : ¹æÀå¿¡°Ô ·ë °ü·ÃÇØ¼­ ¹º°¡ ¿äÃ»À» ÇÒ ¶§´Â ¸Þ¼­µå¸í¿¡ Request·Î ½ÃÀÛÇÏ´Â°Ô À¯Áöº¸¼ö°¡ ÆíÇÏ´Ù.
+    public void RequestMakeScoreItems(Vector3 makePosition)
+    {
+        if(PhotonNetwork.IsMasterClient)
+        {
+            //¹æÀåÀÌ¶ó¸é ±×³É ÇÔ¼ö È£­Œ
+            MakeScoreItems(makePosition);
+        }
+        else
+        {
+            //¾Æ´Ï¶ó¸é ¹æÀåÀÇ ÇÔ¼ö¸¦ È£Ãâ
+            _photonView.RPC(nameof(makePosition), RpcTarget.MasterClient, makePosition);
+        }
+    }
+
+    [PunRPC]
+    private void MakeScoreItems(Vector3 makePosition)
+    {
+        int randomCount = UnityEngine.Random.Range(3, 5);
+
+        for (int i = 0; i < randomCount; i++)
+        {
+            PhotonNetwork.InstantiateRoomObject("ScoreItem", makePosition, Quaternion.identity); // RoomObject´Â ¹æÀå¸¸ °¡Áö°í ÀÖ´Ù.
+        }
+
+
+    }
+}

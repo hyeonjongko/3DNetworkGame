@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
     public PhotonView PhotonView;
     public PlayerStat Stat;
 
-    public int _score = 0;
+    public int Score = 0;
 
     private void Awake()
     {
@@ -36,23 +36,17 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
             //사망처리
             PhotonRoomManager.Instance.OnPlayerDeath(attackerActorNumber);
 
+            //콜라이더 비활성화
+            GetComponent<CharacterController>().enabled = false;
+
             if(PhotonView.IsMine)
             {
                 //아이템 생성
-                MakeScoreItems();
+                ItemObjectFactory.Instance.RequestMakeScoreItems(transform.position);
             }
         }
     }
 
-    private void MakeScoreItems()
-    {
-        int randomCount = UnityEngine.Random.Range(3, 5);
-
-        for (int i = 0; i < randomCount; i++)
-        {
-           PhotonNetwork.Instantiate("ScoreItem", transform.position, Quaternion.identity);
-        }
-    }
 
     // 데이터 동기화를 위한 데이터 읽기(전송), 쓰기(수신) 메서드
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
