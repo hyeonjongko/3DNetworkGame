@@ -2062,6 +2062,7 @@ GameObject:
   - component: {fileID: 189925795}
   - component: {fileID: 189925797}
   - component: {fileID: 189925796}
+  - component: {fileID: 189925798}
   m_Layer: 5
   m_Name: ScorePanel
   m_TagString: Untagged
@@ -2127,6 +2128,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 189925794}
   m_CullTransparentMesh: 1
+--- !u!114 &189925798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189925794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e774ef1a7662f64f8cc0e13fc01cfdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_Score
+  _scoreTextUI: {fileID: 1957145954}
 --- !u!1001 &199384053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16944,7 +16958,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score : 0'
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4bf2c7d6efd5a2243a102e21953ee2ef, type: 2}
   m_sharedMaterial: {fileID: -4873814694693435296, guid: 4bf2c7d6efd5a2243a102e21953ee2ef, type: 2}

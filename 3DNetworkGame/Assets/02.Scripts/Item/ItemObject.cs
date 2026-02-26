@@ -12,11 +12,8 @@ public class ItemObject : MonoBehaviourPun // 포톤뷰를 자동으로 GetComponent해서
         {
             Debug.Log("아이템 충돌!");
 
-            //other.GetComponent<PlayerController>().Score += 100;
+            other.GetComponent<PlayerController>().Score += 100;
 
-            player.Score += 100;
-
-            Debug.Log($"{player.Score}");
 
             ItemObjectFactory.Instance.RequestDelete(photonView.ViewID);
         }
