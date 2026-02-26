@@ -41,4 +41,25 @@ public class ItemObjectFactory : MonoBehaviour
 
 
     }
+
+    public void RequestDelete(int viewID)
+    {
+        if(PhotonNetwork.IsMasterClient)
+        {
+            Delete(viewID);
+        }
+        else
+        {
+            _photonView.RPC(nameof(Delete), RpcTarget.MasterClient, viewID);
+        }
+    }
+
+    [PunRPC]
+    private void Delete(int viewId)
+    {
+        GameObject objectToDelete = PhotonView.Find(viewId).gameObject;
+        if (objectToDelete == null) return;
+
+        PhotonNetwork.Destroy(objectToDelete);
+    }
 }

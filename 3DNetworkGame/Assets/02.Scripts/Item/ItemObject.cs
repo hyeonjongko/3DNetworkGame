@@ -1,15 +1,24 @@
 using Photon.Pun;
+using Photon.Realtime;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviour
+public class ItemObject : MonoBehaviourPun // 포톤뷰를 자동으로 GetComponent해서 읽어온다.
 {
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.CompareTag("Player"))
-        {
-            collision.gameObject.GetComponent<PlayerController>().Score += 100;
+        Player player = GetComponent<Player>();
 
-            PhotonNetwork.Destroy(gameObject);
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("아이템 충돌!");
+
+            //other.GetComponent<PlayerController>().Score += 100;
+
+            player.Score += 100;
+
+            Debug.Log($"{player.Score}");
+
+            ItemObjectFactory.Instance.RequestDelete(photonView.ViewID);
         }
     }
 }
