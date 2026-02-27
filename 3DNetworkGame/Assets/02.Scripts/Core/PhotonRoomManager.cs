@@ -20,7 +20,6 @@ public class PhotonRoomManager : MonoBehaviourPunCallbacks
 
     public event Action<string, string> OnPlayerDeathed;   //플레이어가 룸에서 퇴장했을 때
 
-    [SerializeField] private Transform[] _spawnPoints;
 
     private void Awake()
     {
@@ -46,11 +45,10 @@ public class PhotonRoomManager : MonoBehaviourPunCallbacks
         //    Debug.Log($"{player.Value.NickName} : {player.Value.ActorNumber}");
         //}
 
-        int _spawnIndex = UnityEngine.Random.Range(0, _spawnPoints.Length);
 
         // 리소스 폴더에서 "Player" 이름을 가진 프리팹을 생성(인스턴스화)하고, 서버에 등록도한다.
         //   ㄴ 리소스 폴더는 나쁜것이다. 그러기 때문에 다른 방법을 찾아보거라..
-        PhotonNetwork.Instantiate("Player", _spawnPoints[_spawnIndex].position, Quaternion.identity);
+        SpawnManager.Instance.SpawnPlayer();
     }
 
     //새로운 플레이어가 방에 입장하면 자동으로 호출되는 함수

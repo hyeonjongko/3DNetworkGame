@@ -1898,6 +1898,7 @@ MonoBehaviour:
     JumpStamina: 3
     AttackStamina: 2
     Damage: 10
+    Dead: 0
 --- !u!114 &6127300272311753853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1923,6 +1924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3702213243e82b446bfceb8695dd41d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerDeathAbility
+  _time: 0
 --- !u!114 &6197526510687512958
 MonoBehaviour:
   m_ObjectHideFlags: 0
