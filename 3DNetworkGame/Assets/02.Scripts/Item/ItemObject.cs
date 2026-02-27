@@ -2,20 +2,21 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviourPun // Æ÷Åæºä¸¦ ÀÚµ¿À¸·Î GetComponentÇØ¼­ ÀĞ¾î¿Â´Ù.
+public class ItemObject : MonoBehaviourPun // í¬í†¤ë·°ë¥¼ ìë™ìœ¼ë¡œ GetComponentí•´ì„œ ì½ì–´ì˜¨ë‹¤.
 {
     private void OnTriggerEnter(Collider other)
     {
-        Player player = GetComponent<Player>();
 
         if (other.CompareTag("Player"))
         {
-            Debug.Log("¾ÆÀÌÅÛ Ãæµ¹!");
+            Debug.Log("ì•„ì´í…œ ì¶©ëŒ!");
 
             other.GetComponent<PlayerController>().Score += 100;
 
-
-            ItemObjectFactory.Instance.RequestDelete(photonView.ViewID);
+            if (PhotonNetwork.IsMasterClient)
+            {
+                ItemObjectFactory.Instance.RequestDelete(photonView.ViewID);
+            }
         }
     }
 }

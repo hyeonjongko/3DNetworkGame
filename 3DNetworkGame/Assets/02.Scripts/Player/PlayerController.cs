@@ -39,10 +39,10 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
             //콜라이더 비활성화
             GetComponent<CharacterController>().enabled = false;
 
-            if(PhotonView.IsMine)
+            if(PhotonNetwork.IsMasterClient)
             {
                 //아이템 생성
-                ItemObjectFactory.Instance.RequestMakeScoreItems(transform.position);
+                ItemObjectFactory.Instance.RequestMakeScoreItems(transform.position + new Vector3(0, 1, 0));
             }
         }
     }
