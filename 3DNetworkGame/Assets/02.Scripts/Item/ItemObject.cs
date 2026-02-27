@@ -15,6 +15,10 @@ public class ItemObject : MonoBehaviourPun // 포톤뷰를 자동으로 GetCompo
             if (player.PhotonView.IsMine)
             {
                 PhotonScoreManager.Instance.AddScore(100);
+            }
+
+            if (PhotonNetwork.IsMasterClient)
+            {
                 ItemObjectFactory.Instance.RequestDelete(photonView.ViewID);
             }
         }
