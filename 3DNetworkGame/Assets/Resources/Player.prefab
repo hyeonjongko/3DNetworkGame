@@ -1898,7 +1898,6 @@ MonoBehaviour:
     JumpStamina: 3
     AttackStamina: 2
     Damage: 10
-  Score: 0
 --- !u!114 &6127300272311753853
 MonoBehaviour:
   m_ObjectHideFlags: 0

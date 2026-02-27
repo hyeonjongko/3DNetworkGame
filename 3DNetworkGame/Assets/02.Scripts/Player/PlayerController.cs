@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour, IPunObservable, IDamageable
     public PhotonView PhotonView;
     public PlayerStat Stat;
 
-    public int Score = 0;
+    //public int Score = 0;
 
     private void Awake()
     {

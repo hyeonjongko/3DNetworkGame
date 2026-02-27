@@ -11,10 +11,10 @@ public class ItemObject : MonoBehaviourPun // 포톤뷰를 자동으로 GetCompo
         {
             Debug.Log("아이템 충돌!");
 
-            other.GetComponent<PlayerController>().Score += 100;
-
-            if (PhotonNetwork.IsMasterClient)
+            PlayerController player = other.GetComponentInParent<PlayerController>();
+            if (player.PhotonView.IsMine)
             {
+                PhotonScoreManager.Instance.AddScore(100);
                 ItemObjectFactory.Instance.RequestDelete(photonView.ViewID);
             }
         }

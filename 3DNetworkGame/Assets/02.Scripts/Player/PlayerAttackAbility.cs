@@ -20,6 +20,7 @@ public class PlayerAttackAbility : PlayerAbility
     {
         if (!_owner.PhotonView.IsMine) return;
         if (EventSystem.current.IsPointerOverGameObject()) return;
+        if (_owner.Stat.Health <= 0) return;
 
         _attackTimer += Time.deltaTime;
 
