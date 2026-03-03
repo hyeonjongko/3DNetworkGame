@@ -14,7 +14,7 @@ public class ItemObject : MonoBehaviourPun // 포톤뷰를 자동으로 GetCompo
             PlayerController player = other.GetComponentInParent<PlayerController>();
             if (player.PhotonView.IsMine)
             {
-                PhotonScoreManager.Instance.AddScore(100);
+                ScoreManager.Instance.AddScore(100);
             }
 
             if (PhotonNetwork.IsMasterClient)
