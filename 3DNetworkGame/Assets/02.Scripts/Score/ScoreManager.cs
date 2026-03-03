@@ -37,6 +37,12 @@ public class ScoreManager : MonoBehaviourPunCallbacks
         Refresh();
     }
 
+    public void ReduceScore()
+    {
+        _score /= 2;
+        Refresh();
+    }
+
     private void Refresh()
     {
         //헤시테이블은 딕션너리와 같은 키-값 형태로 저장하는데
@@ -62,16 +68,22 @@ public class ScoreManager : MonoBehaviourPunCallbacks
 
         OnDataChanged?.Invoke();
 
+
         //int score = (int)changedProps["score"];
         //Debug.Log($"Player{targetPlayer.NickName}'의 점수는 : {score}");
     }
 
-    //[데이터 공유]
-    //1. OnSerializeView (+TransformView, AnimatoeView, ...)
-    //      ㄴ C# 기본 타입, Vector
-    //      ㄴ PhotonNetwork...Rate...에 따라
+    // [데이터 공유]
+    // 1. OnSerializeView (+TransformView, AnimatiorView, ...)
+    //    ㄴ C# 기본 타입, Vector, 
+    //    ㄴ PhotonNetwork... Rate... 에 따라
 
-    //2. RPC -> 매개변수를 활용해서 데이터 동기화
-    //      ㄴ 주로 변화가 
+    // 2. RPC -> 매개변수를 활용해서 데이터 동기화 
+    //     ㄴ 주로 변화가 빈번하지 않은 데이터를 함수 호출을 이용해서 동기화..
+
+    // 3. 커스텀 프로퍼티(Custom Property)
+    //    ㄴ 주로 변화가 빈번하지 않은 데이터들을 해시 테이블로 동기화...
+    //    ㄴ (플레이어 준비 상태, 점수, 룸의 모드, 맵 선택 등..)
+
 
 }

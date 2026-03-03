@@ -10,7 +10,7 @@ public class UI_ScoreItem : MonoBehaviour
     public void Set(string nickname, int score)
     {
         NicknameTextUI.text = nickname;
-        ScoreTextUI.text = $"{score:NO}";
+        ScoreTextUI.text = $"{score:N0}";
     }
 
 }

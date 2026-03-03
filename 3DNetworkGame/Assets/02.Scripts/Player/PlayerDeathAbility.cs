@@ -20,6 +20,9 @@ public class PlayerDeathAbility : PlayerAbility
         if(_owner.Stat.Health <= 0 && !_owner.Stat.Dead)
         {
             _owner.Stat.Dead = true;
+
+            ScoreManager.Instance.ReduceScore();
+            
             //죽는 애니메이션 출력 - 모든 클라이언트에 RPC로 전달
             _owner.PhotonView.RPC("PlayDeathAnimation", RpcTarget.All);
         }

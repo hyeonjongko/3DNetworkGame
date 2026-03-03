@@ -23,7 +23,8 @@ public class UI_Score : MonoBehaviour
         //           - 정렬은 이미 매니저에서 해서 넘겨야 하나 vs UI에서 해야하나.. (도메인 규칙에 따라 다르다)
         //           - 필수 : Linq 사용
         // 2. todo : 3명 있는지 적절하게 반복문
-        for(int i = 0; i < _items.Count; i++)
+        int count = Mathf.Min(_items.Count, scoreDatas.Count);
+        for(int i = 0; i < count; i++)
         {
             ScoreData data = scoreDatas[i];
             _items[i].Set(data.Nickname, data.Score);
