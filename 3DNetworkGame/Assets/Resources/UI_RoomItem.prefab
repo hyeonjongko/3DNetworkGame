@@ -487,6 +487,7 @@ GameObject:
   - component: {fileID: 3857517666999919088}
   - component: {fileID: 9037749938091635215}
   - component: {fileID: 2172409035837902659}
+  - component: {fileID: 2352135226574959562}
   m_Layer: 5
   m_Name: UI_RoomItem
   m_TagString: Untagged
@@ -624,3 +625,19 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &2352135226574959562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6877040548739658940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2356de01ea605547aa88481a421579f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UI_RoomItem
+  RoomNameTextUI: {fileID: 8283654836346706109}
+  MasterNickNameTextUI: {fileID: 3269812353334442341}
+  PlayerCountTextUI: {fileID: 459294134029680132}
+  RoomEnterButton: {fileID: 9037749938091635215}
