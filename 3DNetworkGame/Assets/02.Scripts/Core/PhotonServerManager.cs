@@ -31,7 +31,7 @@ public class PhotonServerManager : MonoBehaviourPunCallbacks
         // 방장이 로드한 씬 게임에 다른 유저들도 똑같이 그 씬을 로드하도록 동기화해준다.
         // 방장(마스터 클라이언트) : 방을 만든 '소유자' (방에는 하나의 마스터 클라이언트가 존재)
         // 방장이 씬을 옮기면 다른 사람들도 자동으로 옮겨진다.
-        PhotonNetwork.AutomaticallySyncScene = true;
+        PhotonNetwork.AutomaticallySyncScene = false;
 
         // 위에 설정한 값들을 이용해서 서버로 접속 시도
         PhotonNetwork.ConnectUsingSettings();

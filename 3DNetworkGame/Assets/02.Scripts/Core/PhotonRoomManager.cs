@@ -34,14 +34,14 @@ public class PhotonRoomManager : MonoBehaviourPunCallbacks
 
         //SceneManager.LoadScene("GameScene"); //오류는 아니지만 작동이 하지 않는다.
 
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.LoadLevel("GameScene");
-        }
-        else
-        {
-            // 아무것도 하지 않아도.. 자동으로 방장이 있는 씬으로 옮겨진다.
-        }
+        PhotonNetwork.LoadLevel("GameScene");
+        //if (PhotonNetwork.IsMasterClient)
+        //{
+        //}
+        //else
+        //{
+        //    // 아무것도 하지 않아도.. 자동으로 방장이 있는 씬으로 옮겨진다.
+        //}
 
         OnDataChanged?.Invoke();
 
