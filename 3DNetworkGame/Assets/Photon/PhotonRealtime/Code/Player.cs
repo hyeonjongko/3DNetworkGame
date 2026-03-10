@@ -139,8 +139,6 @@ namespace Photon.Realtime
         /// <remarks>Example: Set a player's character as Tag by assigning the GameObject on Instantiate.</remarks>
         public object TagObject;
 
-        public int Score = 0;
-
 
         /// <summary>
         /// Creates a player instance.
